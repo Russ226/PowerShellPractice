@@ -6,14 +6,14 @@ $recentFiles = @()
 foreach($item in $diskDitem){
     
     if ( Test-Path $item.FullName -PathType Container ){
-        $cur = Get-ChildItem -Path $Item.FullName | Sort-Object { $_.LastWriteTime } -Descending  
+        $cur = Get-ChildItem -Path $Item.FullName 
         $recentFiles += $cur 
         # Write-Output $cur
 
     }
     
 }
-$recentFiles 
+$recentFiles | Sort-Object { $_.LastWriteTime } -Descending  
 
 Write-Output $recentFiles
 
